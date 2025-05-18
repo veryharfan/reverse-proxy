@@ -3,7 +3,6 @@ FROM golang:1.24-alpine3.20 AS builder
 WORKDIR /go/src/reverse-proxy
 COPY . .
 
-RUN go mod tidy
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main main.go
 
 # Final image
