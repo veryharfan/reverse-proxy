@@ -45,10 +45,12 @@ func main() {
 			return
 		}
 
+		log.Printf("Proxying request to %s\n", target)
+
 		proxy := reverseProxy(target)
 		proxy.ServeHTTP(w, r)
 	})
 
 	fmt.Println("Starting reverse proxy server on :80")
-	http.ListenAndServe(":80", nil)
+	http.ListenAndServe(":8080", nil)
 }
